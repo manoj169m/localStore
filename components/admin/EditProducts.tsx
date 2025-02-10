@@ -20,9 +20,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Pencil, Trash2 } from 'lucide-react';
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Dialog,  DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { categories } from './productForm';
-import Image from 'next/image';
 
 export interface Product {
   _id: string;
