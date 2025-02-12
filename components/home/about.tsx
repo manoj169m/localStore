@@ -6,8 +6,9 @@ const About = () => {
             About Us
           </h2>
           <p className="text-xl text-green-700 max-w-2xl mx-auto animate-fade-in-up">
-            We are a local grocery store committed to providing fresh and high-quality products to our community. Our mission is to make healthy living accessible and affordable for everyone.
-          </p>
+          Serving Our Community with Quality and Trust for Over 20 Years
+          For two decades, we have provided high-quality products and exceptional service to our loyal customers. Our commitment to excellence ensures every purchase meets the highest standards, making us a trusted part of your family.
+           Thank you for your continued support.          </p>
         </div>
       </section>
     );
