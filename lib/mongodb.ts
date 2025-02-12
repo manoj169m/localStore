@@ -13,11 +13,11 @@ declare global {
 }
 
 // Extend the NodeJS namespace to include our type
-declare namespace NodeJS {
+
   interface Global {
     mongoose: MongooseCache | undefined;
   }
-}
+
 
 // Type for mongoose connection options
 type MongooseConnectionOptions = {
