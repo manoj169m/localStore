@@ -171,13 +171,13 @@ const ProductTable = () => {
                   <TableCell className="font-medium">{product.name}</TableCell>
                   <TableCell className="font-medium">
                   <Image
-  src={product.image}
-  alt="product"
-  width={40}
-  height={40}
-  loader={({ src }) => src}
-  unoptimized
-/>                  </TableCell>
+                      src={product.image}
+                      alt="product"
+                      width={40}
+                      height={40}
+                      loader={({ src }) => src}
+                      unoptimized
+                    />                  </TableCell>
                   <TableCell>{product.category}</TableCell>
                   <TableCell className="text-right">
                     ${product.price.toFixed(2)}
