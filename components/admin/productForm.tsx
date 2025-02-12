@@ -47,6 +47,7 @@ const ProductForm = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Handle form field changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -55,6 +56,7 @@ const ProductForm = () => {
     }));
   };
 
+  // Handle category selection change
   const handleCategoryChange = (value: string) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -62,29 +64,30 @@ const ProductForm = () => {
     }));
   };
 
+  // Validate form inputs
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    // Name validation
+    // Validate name
     if (!formData.name.trim()) {
       newErrors.name = 'Product name is required';
     }
 
-    // Price validation
+    // Validate price
     if (!formData.price.trim()) {
       newErrors.price = 'Price is required';
     } else if (isNaN(Number(formData.price)) || Number(formData.price) < 0) {
       newErrors.price = 'Price must be a positive number';
     }
 
-    // Quantity validation
+    // Validate quantity
     if (!formData.quantity.trim()) {
       newErrors.quantity = 'Quantity is required';
     } else if (isNaN(Number(formData.quantity)) || Number(formData.quantity) < 0) {
       newErrors.quantity = 'Quantity must be a non-negative number';
     }
 
-    // Optional: Image URL validation
+    // Optional: Validate image URL
     if (formData.image.trim() && !isValidUrl(formData.image)) {
       newErrors.image = 'Invalid image URL';
     }
@@ -93,6 +96,7 @@ const ProductForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Check if URL is valid
   const isValidUrl = (url: string): boolean => {
     try {
       new URL(url);
@@ -102,10 +106,11 @@ const ProductForm = () => {
     }
   };
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate form
+    // Validate the form before submitting
     if (!validateForm()) {
       return;
     }
@@ -130,7 +135,7 @@ const ProductForm = () => {
         throw new Error(errorData.message || 'Failed to create product');
       }
 
-      // Reset form and redirect or show success message
+      // Reset form on successful submission
       setFormData({
         name: '',
         price: '',
@@ -139,27 +144,37 @@ const ProductForm = () => {
         quantity: '',
         category: '',
       });
-      router.push('/product'); // Redirect to products page
-    } catch (error) {
-      // Handle any submission errors
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        submit: error.message,
-      }));
+      router.push('/product'); // Redirect to the products page
+    } catch (error: unknown) {
+      // Handle any errors from the submit
+      if (error instanceof Error) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          submit: error.message,
+        }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          submit: 'An unexpected error occurred.',
+        }));
+      }
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  // Session check
   useEffect(() => {
-    if (status === 'loading') return; // Do nothing while loading
+    if (status === 'loading') return;
     if (!session) signIn(); // If not authenticated, redirect to sign-in page
   }, [session, status]);
 
+  // Redirect to the sign-in page if no session
   if (!session) {
     return <p>Redirecting to sign-in page...</p>;
   }
 
+  // Redirect to edit page
   const handleEdit = () => {
     router.push('/signup/dashboard/edit');
   };
@@ -265,7 +280,9 @@ const ProductForm = () => {
         </CardContent>
       </Card>
 
-      <button onClick={handleEdit}>Edit products</button>
+      <button onClick={handleEdit} className="mt-4 p-2 bg-blue-500 text-white rounded">
+        Edit Products
+      </button>
     </div>
   );
 };
