@@ -22,6 +22,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Pencil, Trash2 } from 'lucide-react';
 import { Dialog,  DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { categories } from './productForm';
+import Image from 'next/image';
 
 export interface Product {
   _id: string;
@@ -169,8 +170,14 @@ const ProductTable = () => {
                 <TableRow key={product._id}>
                   <TableCell className="font-medium">{product.name}</TableCell>
                   <TableCell className="font-medium">
-                    <img src={product.image} alt='product' width={40} height={40} ></img>
-                  </TableCell>
+                  <Image
+  src={product.image}
+  alt="product"
+  width={40}
+  height={40}
+  loader={({ src }) => src}
+  unoptimized
+/>                  </TableCell>
                   <TableCell>{product.category}</TableCell>
                   <TableCell className="text-right">
                     ${product.price.toFixed(2)}
