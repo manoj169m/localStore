@@ -6,9 +6,17 @@ type MongooseCache = {
   promise: Promise<typeof mongoose> | null;
 };
 
-// Declare the global type to include our mongoose cache
+// Properly extend the NodeJS.Global interface
 declare global {
+  // eslint-disable-next-line no-var
   var mongoose: MongooseCache | undefined;
+}
+
+// Extend the NodeJS namespace to include our type
+declare namespace NodeJS {
+  interface Global {
+    mongoose: MongooseCache | undefined;
+  }
 }
 
 // Type for mongoose connection options
@@ -27,7 +35,7 @@ if (!MONGODB_URI) {
 }
 
 // Initialize the cached connection
-let cached: MongooseCache = global.mongoose || { conn: null, promise: null };
+const cached: MongooseCache = global.mongoose || { conn: null, promise: null };
 
 if (!global.mongoose) {
   global.mongoose = cached;
