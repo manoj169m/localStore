@@ -1,10 +1,11 @@
 'use client';
 import { SessionProvider } from 'next-auth/react';
 import { ReactNode } from 'react';
+import { Session } from 'next-auth'; // Import the correct type from next-auth
 
 interface ProvidersProps {
   children: ReactNode;
-  session?: any; // Consider using more specific type from next-auth if possible
+  session?: Session | null; // The session can be null if there's no active session
 }
 
 export default function Providers({ children, session }: ProvidersProps) {
