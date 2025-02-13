@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Products = () => {
     const products = [
       { id: 1, name: 'Dhal', price: ' ₹140', image: '/dhal.jpg' },
@@ -17,11 +19,19 @@ const Products = () => {
                 key={product.id}
                 className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up"
               >
-                <img
+                {/* <img
                   src={product.image}
                   alt={product.name}
                   className="w-full h-48 object-cover rounded-t-lg"
-                />
+                /> */}
+                 <Image
+                             className="w-full h-48 object-cover rounded-t-lg"
+                             src={product.image}
+                                alt="product"
+                                width={40}
+                                height={40}
+                                unoptimized
+                                    />   
                 <h3 className="text-2xl font-semibold text-green-900 mt-4">{product.name}</h3>
                 <p className="text-green-600 text-xl mt-2">{product.price}</p>
               </div>
