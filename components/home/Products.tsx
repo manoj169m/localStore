@@ -1,8 +1,8 @@
 const Products = () => {
     const products = [
-      { id: 1, name: 'Apples', price: '$2.99', image: '/images/apples.jpg' },
-      { id: 2, name: 'Bananas', price: '$1.99', image: '/images/bananas.jpg' },
-      { id: 3, name: 'Carrots', price: '$0.99', image: '/images/carrots.jpg' },
+      { id: 1, name: 'Dhal', price: ' ₹140', image: '/dhal.jpg' },
+      { id: 2, name: 'Chilli', price: ' ₹200', image: '/chilli.jpg' },
+      { id: 3, name: 'Agarbatti', price: ' ₹10', image: '/agar.jpg' },
     ];
   
     return (

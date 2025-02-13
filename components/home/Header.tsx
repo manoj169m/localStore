@@ -27,7 +27,7 @@ const Header = () => {
       return (
         <button
           onClick={handleSignout}
-          className="bg-green-700 px-4 py-2 rounded hover:bg-green-800"
+          className="bg-green-700 px-3 text-white rounded-md hover:bg-green-800"
         >
           Sign Out
         </button>
@@ -37,8 +37,8 @@ const Header = () => {
     return (
       <button
         onClick={handleSignin}
-        className="bg-green-700 px-4 py-2 rounded hover:bg-green-800"
-      >
+        className="bg-green-700 px-3 py-1 text-white rounded-md hover:bg-green-800"
+        >
         Admin Login
       </button>
     );
@@ -53,11 +53,11 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-green-600 text-white sticky top-0 z-50">
+    <header className="bg-white text-black sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
         <div className="flex items-center">
-          <Link href="/">
-            Grocery Store
+          <Link href="/"> 
+            Balu Maligai
           </Link>
         </div>
         
@@ -93,7 +93,7 @@ const Header = () => {
           <Link href="/" className="block p-2 hover:bg-green-600">Home</Link>
           <Link href="/about" className="block p-2 hover:bg-green-600">About</Link>
           <Link href="/product" className="block p-2 hover:bg-green-600">Products</Link>
-          <div className="p-2">
+          <div className="">
             <AuthButton />
           </div>
         </div>
