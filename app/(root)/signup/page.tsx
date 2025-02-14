@@ -10,7 +10,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    'use server'
     e.preventDefault();
     setError('');
     setLoading(true);
