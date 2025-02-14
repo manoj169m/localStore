@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { userData } from '@/data/user';
 
 export default NextAuth({
   providers: [
@@ -9,18 +10,30 @@ export default NextAuth({
         username: { label: 'Username', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
-      authorize(credentials) {
+      async authorize(credentials) {
         console.log('Credentials received:', credentials);
-        if (credentials?.username === process.env.ADMIN_USERNAME && credentials?.password === process.env.ADMIN_PASSWORD) {
-          console.log('Authentication successful');
-          return { id: 'admin', name: 'Admin' };
+
+        // Check if credentials are provided
+        if (credentials?.username === userData.username) {
+          const isMatch = credentials.password === userData.password;
+
+          if (isMatch) {
+            // Return userData, but make sure it matches the User type
+            return {
+              id: userData.id,
+              username: userData.username,
+              email: userData.email,  // You should include any relevant user properties
+            };
+          } else {
+            throw new Error('Incorrect password');
+          }
+        } else {
+          throw new Error('User not found');
         }
-        console.log('Authentication failed');
-        return null;
-      },      
+      },
     }),
   ],
   pages: {
-    signIn: '/signup',
+    signIn: '/signup', // Make sure this is the correct path for your sign-up page
   },
 });
