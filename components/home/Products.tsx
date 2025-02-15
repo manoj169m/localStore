@@ -19,7 +19,7 @@ const Products = () => {
                 key={product.id}
                 className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up"
               >
-               
+                
                  <Image
                              className="w-full h-48 object-cover rounded-t-lg"
                              src={product.image}

@@ -13,16 +13,15 @@ export default NextAuth({
       async authorize(credentials) {
         console.log('Credentials received:', credentials);
 
-        // Check if credentials are provided
         if (credentials?.username === userData.username) {
           const isMatch = credentials.password === userData.password;
 
           if (isMatch) {
-            // Return userData, but make sure it matches the User type
+            // Return userData, include any relevant user properties
             return {
               id: userData.id,
               username: userData.username,
-              email: userData.email,  // You should include any relevant user properties
+              email: userData.email,
             };
           } else {
             throw new Error('Incorrect password');
@@ -33,7 +32,12 @@ export default NextAuth({
       },
     }),
   ],
+  session: {
+    maxAge: 24 * 60 * 60, // Session duration (24 hours)
+    strategy: 'jwt', // Ensure using database-based session management if you have a database
+  },
   pages: {
     signIn: '/signup', // Make sure this is the correct path for your sign-up page
   },
+  secret: process.env.NEXTAUTH_SECRET, // Ensure this is set in your environment variables
 });
