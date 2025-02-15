@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const Products = () => {
     const products = [
-      { id: 1, name: 'Dhal', price: ' ₹140', image: '/dhal.jpg' },
-      { id: 2, name: 'Chilli', price: ' ₹200', image: '/chilli.jpg' },
-      { id: 3, name: 'Agarbatti', price: ' ₹10', image: '/agar.jpg' },
+      { id: 1, name: 'Dhal', price: ' ₹140', image: '/dhal.webp' },
+      { id: 2, name: 'Chilli', price: ' ₹200', image: '/chilli.webp' },
+      { id: 3, name: 'Agarbatti', price: ' ₹10', image: '/agar.webp' },
     ];
   
     return (
@@ -19,11 +19,7 @@ const Products = () => {
                 key={product.id}
                 className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up"
               >
-                {/* <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-48 object-cover rounded-t-lg"
-                /> */}
+               
                  <Image
                              className="w-full h-48 object-cover rounded-t-lg"
                              src={product.image}

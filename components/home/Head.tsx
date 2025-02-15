@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 const HeadSection: React.FC = () => {
   // Define an array of images related to the grocery store
   const images: string[] = [
-    "/g1.jpg", // Replace with your actual image paths
-    "/g2.jpg",
-    "/g3.jpg",
-    "/g4.jpg",
+    "/g1.webp", // Replace with your actual image paths
+    "/g2.webp",
+    "/g3.webp",
+    "/g4.webp",
   ];
 
   // Set up a state to manage the current image index
